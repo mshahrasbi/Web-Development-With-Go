@@ -1,0 +1,16 @@
+
+What is the package context? and what an you do with it?
+Context is exactly what it says, what is the context of what Iam
+working with. So context allows when a request comes into your server you can create a context you can create
+add to that context you could add some session variable so maybe like the session id and then you could pass that context 
+around through your system and most importantly whn that context is finished so you might have that request come in and
+other processes might be spawned as part of that request like go get this data get that data and you can set parameters
+and limits on this request right this context. The context of this request is you have got 5 seconds to get that data otherwise
+we are done, while this request is over here working on getting the data it can communicate back. All the processes can communicate back
+likewise if we cancelled on process like if this got fullfilled or destroyed or whatever and we had some other process running over here 
+all these processes would shut down.
+You don't want to use context as a place to stuff a lot of data and then pass that data around. You still want to pass your data around 
+but what you can do, request gobe data that transit's processes and API is not for passing optional paramteres to functions. So you know 
+something like your session Id, I think would be accesptable to put into context but then also being able to set deadline right and then
+also being able to signal the other processes when they cancel that everything should cancel, that is related to this context that is what 
+context is used.
